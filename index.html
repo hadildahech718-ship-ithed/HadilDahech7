@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hadil Dahech — Portfolio</title>
+
+  <!-- Modern Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+    }
+
+    /* Background animation container */
+    #vanta-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .profile-img {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      width: 130px;
+      display: block;
+      margin: 10px auto 20px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      margin-top: 20px;
+      font-weight: 600;
+      opacity: 0.9;
+      letter-spacing: 0.8px;
+    }
+
+    .skills span {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 6px 12px;
+      border-radius: 10px;
+      margin: 5px;
+      font-size: 13px;
+    }
+
+    .project-img {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    a.btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 18px;
+      background: #00d1b2;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+
+    a.btn:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Animation Background -->
+  <div id="vanta-bg"></div>
+
+  <div class="container">
+
+    <!-- LEFT CARD -->
+    <div class="card">
+      <img src="/mnt/data/Gemini_Generated_Image_gjhe1pgjhe1pgjhe.png" 
+           class="profile-img" />
+
+      <img src="/mnt/data/ISIM_LOGO_ar.png" class="logo" />
+
+      <h1>Hadil Dahech</h1>
+      <h2>Licence in Communication Technologies — ISIMM Monastir</h2>
+
+      <div class="section-title">📌 Contact</div>
+      <p>Email: <a href="mailto:hadildahech718@gmail.com" style="color:#00ffd9">hadildahech718@gmail.com</a></p>
+      <p>Phone: +216 95717066</p>
+      <p>Location: Sfax — Tunisia</p>
+
+      <a class="btn" href="Hadil-Dahech.pdf" download>Download CV</a>
+      <a class="btn" href="https://www.linkedin.com/in/dahech-hadil-708358311" target="_blank">LinkedIn</a>
+
+      <div class="section-title">💡 Languages</div>
+      <p>Arabic — Native<br>French — B2<br>English — C1</p>
+
+      <div class="section-title">⚙️ Skills</div>
+      <div class="skills">
+        <span>Java</span>
+        <span>Python</span>
+        <span>HTML/CSS/JS</span>
+        <span>Arduino / ESP32</span>
+        <span>IoT Systems</span>
+        <span>Web Development</span>
+        <span>Debugging</span>
+      </div>
+    </div>
+
+    <!-- RIGHT CARD -->
+    <div class="card">
+
+      <h1>✨ About Me</h1>
+      <p>
+        I am a motivated Communication Technologies student at ISIMM, passionate about IoT, 
+        embedded systems, and smart automation. 
+        I enjoy building real-world systems using sensors and microcontrollers, 
+        combining hardware and software into useful solutions.
+      </p>
+
+      <div class="section-title">🎓 Education</div>
+      <p>License in Communication Technologies (LTC) — ISIMM Monastir</p>
+      <p>Baccalaureate in Experimental Sciences</p>
+
+      <div class="section-title">🚀 Projects</div>
+
+      <h3>🔹 Intelligent Home Automation System (PFA Project)</h3>
+      <p>
+        Arduino-based smart system controlling temperature, humidity, light, and soil moisture with LEDs, buzzer, LCD, and sensors.
+      </p>
+
+      <img src="/mnt/data/WhatsApp Image 2025-11-11 at 16.34.39_11d512d7.jpg" 
+           class="project-img" />
+
+      <h3>🔹 Smart Daily Wellness Assistant</h3>
+      <p>
+        IoT device for monitoring wellness: hydration reminders, temperature/humidity tracking, and sensor-based notifications.
+      </p>
+
+      <h3>🔹 E-Commerce Mini Website</h3>
+      <p>Frontend project built using HTML, CSS, and JavaScript.</p>
+
+    </div>
+  </div>
+
+  <!-- VANTA ANIMATION -->
+  <script src="three.r134.min.js"></script>
+  <script src="vanta.net.min.js"></script>
+  <script>
+    VANTA.NET({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x00f0c0,
+      backgroundColor: 0x000000,
+      points: 12.0,
+      maxDistance: 22.0,
+      spacing: 18.0
+    });
+  </script>
+
+</body>
+</html>
