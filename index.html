@@ -1,214 +1,517 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hadil Dahech — Portfolio</title>
 
-  <!-- Modern Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Nunito Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
+    :root {
+      --bg-1: #0a0a0b;
+      --bg-2: #0d0610;
+      --card-dark: rgba(255,255,255,0.04);
+      --text: #eef0ff;
+      --muted: rgba(255,255,255,0.7);
+      --accent1: #c071ff;
+      --accent2: #7a4bff;
+      font-family: "Nunito", sans-serif;
+    }
+
     body {
       margin: 0;
-      font-family: "Poppins", sans-serif;
-      color: #fff;
+      background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      color: var(--text);
+      overflow-x: hidden;
     }
 
-    /* Background animation container */
+    /* HEADER WITH SUBTLE ANIMATION */
+    #header {
+      position: relative;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 20px;
+    }
+
     #vanta-bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 25px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 18px;
-      padding: 20px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    #header-content {
+      z-index: 5;
+      position: relative;
     }
 
     .profile-img {
-      width: 100%;
-      border-radius: 16px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .logo {
-      width: 130px;
-      display: block;
-      margin: 10px auto 20px;
+      box-shadow: 0 8px 30px rgba(150,70,200,0.35);
+      border: 2px solid rgba(255,255,255,0.1);
     }
 
     h1 {
-      font-size: 26px;
-      margin-bottom: 6px;
-      font-weight: 600;
+      margin: 16px 0 6px;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
     h2 {
+      margin: 0;
       font-size: 15px;
-      opacity: 0.8;
-      margin-bottom: 16px;
+      opacity: 0.75;
+      font-weight: 600;
+    }
+
+    /* CONTACT ICONS */
+    .contact-icons {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 16px;
+    }
+
+    .contact-icons a {
+      text-decoration: none;
+      color: var(--accent1);
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-icons a:hover {
+      color: #e8c0ff;
+      transform: translateY(-2px);
+    }
+
+    .contact-icons svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2;
+    }
+
+    /* MAIN CONTENT */
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: var(--card-dark);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 28px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     }
 
     .section-title {
-      margin-top: 20px;
-      font-weight: 600;
-      opacity: 0.9;
-      letter-spacing: 0.8px;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      border-left: 4px solid var(--accent1);
+      padding-left: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .skills span {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 6px 12px;
-      border-radius: 10px;
-      margin: 5px;
-      font-size: 13px;
+    .section-title svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2.5;
+      color: var(--accent1);
     }
 
-    .project-img {
-      width: 100%;
-      border-radius: 12px;
+    p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+      margin: 8px 0;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
       margin-top: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
-    a.btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 18px;
-      background: #00d1b2;
-      border-radius: 10px;
-      text-decoration: none;
-      color: #fff;
+    .skill {
+      background: rgba(255,255,255,0.07);
+      padding: 8px 12px;
+      border-radius: 50px;
       font-weight: 600;
-      transition: opacity 0.3s;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: 0.3s;
     }
 
-    a.btn:hover {
+    .skill:hover {
+      background: rgba(192,113,255,0.15);
+      border-color: rgba(192,113,255,0.3);
+    }
+
+    .project-item {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .project-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .project-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--accent1);
+      margin-bottom: 8px;
+    }
+
+    .project-date {
+      font-size: 13px;
+      opacity: 0.6;
+      margin-bottom: 8px;
+    }
+
+    .education-item {
+      margin-bottom: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent1);
+    }
+
+    .education-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .education-school {
+      font-size: 14px;
       opacity: 0.8;
     }
 
-    @media (max-width: 900px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
+    .education-date {
+      font-size: 13px;
+      opacity: 0.6;
     }
+
+    .language-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .language-item {
+      background: rgba(255,255,255,0.05);
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .language-name {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .language-level {
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: linear-gradient(90deg,var(--accent1),var(--accent2));
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(150,70,200,0.25);
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0 60px;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+
+    ul {
+      color: var(--muted);
+      line-height: 1.8;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 26px; }
+      .container { padding: 0 16px; }
+      .contact-icons { flex-wrap: wrap; }
+    }
+
   </style>
 </head>
 
 <body>
 
-  <!-- Animation Background -->
+<!-- HEADER -->
+<header id="header">
   <div id="vanta-bg"></div>
 
-  <div class="container">
+  <div id="header-content">
+    <img src="https://media.licdn.com/dms/image/v2/D5603AQFlWsEPDFG5uQ/profile-displayphoto-crop_800_800/B56ZnqUhVWI0AI-/0/1760572873113?e=1765411200&v=beta&t=xdIpRn5ZhFqvE6msX_mRgX88l76VsZO6jUcmJdRnlKk"
+         alt="Hadil Dahech" class="profile-img">
 
-    <!-- LEFT CARD -->
-    <div class="card">
-      <img src="/mnt/data/Gemini_Generated_Image_gjhe1pgjhe1pgjhe.png" 
-           class="profile-img" />
+    <h1>Hadil Dahech</h1>
+    <h2>License in ICT — IoT & Networks | ISIMM Monastir</h2>
+  </div>
+</header>
 
-      <img src="/mnt/data/ISIM_LOGO_ar.png" class="logo" />
+<!-- CONTENT -->
+<div class="container">
 
-      <h1>Hadil Dahech</h1>
-      <h2>Licence in Communication Technologies — ISIMM Monastir</h2>
-
-      <div class="section-title">📌 Contact</div>
-      <p>Email: <a href="mailto:hadildahech718@gmail.com" style="color:#00ffd9">hadildahech718@gmail.com</a></p>
-      <p>Phone: +216 95717066</p>
-      <p>Location: Sfax — Tunisia</p>
-
-      <a class="btn" href="Hadil-Dahech.pdf" download>Download CV</a>
-      <a class="btn" href="https://www.linkedin.com/in/dahech-hadil-708358311" target="_blank">LinkedIn</a>
-
-      <div class="section-title">💡 Languages</div>
-      <p>Arabic — Native<br>French — B2<br>English — C1</p>
-
-      <div class="section-title">⚙️ Skills</div>
-      <div class="skills">
-        <span>Java</span>
-        <span>Python</span>
-        <span>HTML/CSS/JS</span>
-        <span>Arduino / ESP32</span>
-        <span>IoT Systems</span>
-        <span>Web Development</span>
-        <span>Debugging</span>
-      </div>
+  <div class="card">
+    <div class="section-title">
+      <i data-lucide="user"></i>
+      About Me
     </div>
-
-    <!-- RIGHT CARD -->
-    <div class="card">
-
-      <h1>✨ About Me</h1>
-      <p>
-        I am a motivated Communication Technologies student at ISIMM, passionate about IoT, 
-        embedded systems, and smart automation. 
-        I enjoy building real-world systems using sensors and microcontrollers, 
-        combining hardware and software into useful solutions.
-      </p>
-
-      <div class="section-title">🎓 Education</div>
-      <p>License in Communication Technologies (LTC) — ISIMM Monastir</p>
-      <p>Baccalaureate in Experimental Sciences</p>
-
-      <div class="section-title">🚀 Projects</div>
-
-      <h3>🔹 Intelligent Home Automation System (PFA Project)</h3>
-      <p>
-        Arduino-based smart system controlling temperature, humidity, light, and soil moisture with LEDs, buzzer, LCD, and sensors.
-      </p>
-
-      <img src="/mnt/data/WhatsApp Image 2025-11-11 at 16.34.39_11d512d7.jpg" 
-           class="project-img" />
-
-      <h3>🔹 Smart Daily Wellness Assistant</h3>
-      <p>
-        IoT device for monitoring wellness: hydration reminders, temperature/humidity tracking, and sensor-based notifications.
-      </p>
-
-      <h3>🔹 E-Commerce Mini Website</h3>
-      <p>Frontend project built using HTML, CSS, and JavaScript.</p>
-
+    <p>
+      I'm a student in Communication Technologies (LTC) at ISIMM, motivated and adaptable, with
+      strong teamwork, communication, and problem-solving skills. Passionate about
+      learning and contributing to innovative projects in technology-driven environments. I specialize in IoT systems,
+      embedded electronics with Arduino and ESP32, and web development.
+    </p>
+    <div style="margin-top: 16px; text-align: center;">
+      <a class="btn" href="https://drive.google.com/file/d/1zap5XCCw960OMbB35D3LWQ3wSXSq2DZu/view?usp=sharing" target="_blank">
+        <i data-lucide="download"></i>
+        Download My CV
+      </a>
     </div>
   </div>
 
-  <!-- VANTA ANIMATION -->
-  <script src="three.r134.min.js"></script>
-  <script src="vanta.net.min.js"></script>
-  <script>
-    VANTA.NET({
-      el: "#vanta-bg",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0x00f0c0,
-      backgroundColor: 0x000000,
-      points: 12.0,
-      maxDistance: 22.0,
-      spacing: 18.0
-    });
-  </script>
+  <div class="card">
+    <div class="section-title">
+      <i data-lucide="contact"></i>
+      Contact
+    </div>
+    <p style="display: flex; align-items: center; gap: 8px;">
+      <i data-lucide="mail" style="width: 18px; height: 18px; color: var(--accent1);"></i>
+      <strong>Email:</strong> hadildahech718@gmail.com
+    </p>
+    <p style="display: flex; align-items: center; gap: 8px;">
+      <i data-lucide="phone" style="width: 18px; height: 18px; color: var(--accent1);"></i>
+      <strong>Phone:</strong> +216-95717066
+    </p>
+    <p style="display: flex; align-items: center; gap: 8px;">
+      <i data-lucide="map-pin" style="width: 18px; height: 18px; color: var(--accent1);"></i>
+      <strong>Location:</strong> 3077 Douar Louata, Jbeniana, Sfax, Tunisia
+    </p>
+    <p style="display: flex; align-items: center; gap: 8px;">
+      <i data-lucide="linkedin" style="width: 18px; height: 18px; color: var(--accent1);"></i>
+      <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/dahech-hadil-708358311/" target="_blank" style="color: var(--accent1); text-decoration: none;">linkedin.com/in/dahech-hadil-708358311</a>
+    </p>
+  </div>
+
+  <div class="card">
+    <div class="section-title">
+      <i data-lucide="graduation-cap"></i>
+      Education
+    </div>
+    
+    <div class="education-item">
+      <div class="education-title">License in Communication Technologies (LTC)</div>
+      <div class="education-school">Higher Institute of Informatics and Mathematics, Monastir (ISIMM) — Monastir University</div>
+      <div class="education-date">2021 - Present</div>
+      <p style="margin-top: 8px;">
+        Developing skills in digital communications, networking,
+        programming, IoT, and embedded systems through hands-on projects.
+      </p>
+    </div>
+
+    <div class="education-item">
+      <div class="education-title">Baccalaureate in Experimental Sciences</div>
+      <div class="education-school">18 January Secondary Institute, Jbeniana</div>
+      <div class="education-date">2020 - 2021</div>
+      <p style="margin-top: 8px;">Graduated with Honor</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">
+      <i data-lucide="folder"></i>
+      Projects & Experiences
+    </div>
+
+    <div class="project-item">
+      <div class="project-title">Smart Daily Wellness Assistant (IoT & Intelligent Well-Being)</div>
+      <div class="project-date">PFA Project — 2025</div>
+      <p>
+        Developed an IoT-based smart assistant to promote daily wellness by
+        monitoring temperature, humidity, light, and weight. Implemented
+        notifications and alerts to remind users to stay hydrated and maintain
+        comfort. Combined ESP32 and Arduino hardware, sensors, buzzer,
+        LCD, and a mobile interface to create an intelligent companion that
+        supports a balanced lifestyle.
+      </p>
+    </div>
+
+    <div class="project-item">
+      <div class="project-title">E-Commerce Website (Online Store Project)</div>
+      <div class="project-date">2025</div>
+      <p>
+        Developed a responsive website for online product sales using
+        HTML, CSS, and JavaScript. Designed a clean and user-friendly interface with product listings,
+        shopping cart, and checkout pages.
+        Implemented dynamic features such as product filtering, search
+        bar, and interactive design for better user experience.
+      </p>
+    </div>
+
+    <div class="project-item">
+      <div class="project-title">Intelligent Home Automation System</div>
+      <div class="project-date">PFA Project — September 2025</div>
+      <p>
+        Built a real-time IoT-based smart home system integrating Arduino
+        boards, sensors (DHT11, LM35, LDR, soil humidity), and actuators.
+        Developed a mobile application & LCD interface for monitoring
+        temperature, humidity, and lighting.
+        Automated irrigation and room lighting with manual/remote override
+        via mobile app.
+      </p>
+    </div>
+
+    <div class="project-item">
+      <div class="project-title">PCB Design Volunteer – CPU Club</div>
+      <div class="project-date">2024-2025</div>
+      <p>
+        Collaborated with club members to design and prototype printed
+        circuit boards (PCBs) for student and IoT projects.
+        Used tools such as Proteus for schematic design and PCB layout.
+        Assisted in testing, soldering, and troubleshooting electronic
+        circuits.
+        Supported workshops to help new members learn about PCB
+        fabrication and embedded systems.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <div class="section-title">
+      <i data-lucide="code-2"></i>
+      Skills
+    </div>
+    <div class="skills">
+      <span class="skill">Java</span>
+      <span class="skill">Python</span>
+      <span class="skill">HTML</span>
+      <span class="skill">CSS</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">IoT & Embedded Systems</span>
+      <span class="skill">Arduino / ESP32</span>
+      <span class="skill">DHT11 / LM35 Sensors</span>
+      <span class="skill">Web Development</span>
+      <span class="skill">Networking Basics</span>
+      <span class="skill">Critical Thinking</span>
+      <span class="skill">Problem-Solving</span>
+      <span class="skill">PCB Design (Proteus)</span>
+      <span class="skill">Electronic Circuits</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">
+      <i data-lucide="languages"></i>
+      Languages
+    </div>
+    <div class="language-grid">
+      <div class="language-item">
+        <div class="language-name">Arabic</div>
+        <div class="language-level">Native</div>
+      </div>
+      <div class="language-item">
+        <div class="language-name">English</div>
+        <div class="language-level">C1 (Advanced)</div>
+      </div>
+      <div class="language-item">
+        <div class="language-name">French</div>
+        <div class="language-level">B2 (Upper Intermediate)</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>© <span id="year"></span> Hadil Dahech — Portfolio</footer>
+
+<!-- VANTA SCRIPT — HEADER ONLY -->
+<script src="https://unpkg.com/three@0.134.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/tengbao/vanta@latest/dist/vanta.net.min.js"></script>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Initialize Lucide icons
+  lucide.createIcons();
+
+  VANTA.NET({
+    el: "#vanta-bg",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 300.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00,
+    color: 0xc071ff,
+    backgroundColor: 0x050005,
+    points: 12.00,
+    maxDistance: 20.00,
+    spacing: 18.00
+  });
+</script>
 
 </body>
 </html>
